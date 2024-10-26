@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function bai3() {
+        const arr = [];
+        let n;
+        while (true) {
+            n = parseInt(prompt("Nhập số lượng phần tử (n <= 50): "));
+            if (n >= 1 && n <= 50) {
+                break;
+            } else {
+                alert("n phải nằm trong khoảng từ 1 đến 50. Vui lòng nhập lại.");
+            }
+        }
+        for (let i = 0; i < n; i++) {
+            let num;
+            while (true) {
+                num = parseInt(prompt(`Nhập phần tử thứ ${i + 1}: `));
+                if (!isNaN(num)) {
+                    arr.push(num);
+                    break;
+                } else {
+                    alert("Vui lòng nhập số nguyên.");
+                }
+            }
+        }
+        console.log("Mảng đã nhập:", arr);
+        let k;
+        while (true) {
+            k = parseInt(prompt("Nhập số nguyên dương k: "));
+            if (k > 0) {
+                break;
+            } else {
+                alert("k phải là một số nguyên dương. Vui lòng nhập lại.");
+            }
+        }
+        let count = 0;
+        for (let i = 0; i < n; i++) {
+            for (let j = i + 1; j < n; j++) {
+                if ((arr[i] + arr[j]) % k === 0) {
+                    count++;
+                    console.log(`Cặp số thỏa mãn: (${arr[i]}, ${arr[j]})`);
+                }
+            }
+        }
+        console.log(`Số cặp có tổng chia hết cho ${k}: ${count}`);
+    }
+
+    bai3();
+</script>
+</body>
+</html>

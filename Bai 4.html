@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản lý khách hàng</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th colspan="5">Quản lý khách hàng</th>
+    </tr>
+    <tr>
+        <td><input type="text" placeholder="Mã khách hàng" id="makhachHang"></td>
+        <td><input type="text" placeholder="Tên khách hàng" id="tenkhachHang"></td>
+        <td><input type="text" placeholder="Số điện thoại" id="sodienThoai"></td>
+        <td><input type="text" placeholder="Địa chỉ" id="diaChi"></td>
+        <td><input type="text" placeholder="Email" id="email"></td>
+        <td>
+            <button id="themkhachHang">Add</button>
+        </td>
+    </tr>
+</table>
+
+<h3>Danh sách khách hàng</h3>
+<table id="danhSach">
+    <tr>
+        <th>Mã khách hàng</th>
+        <th>Tên khách hàng</th>
+        <th>Số điện thoại</th>
+        <th>Địa chỉ</th>
+        <th>Email</th>
+    </tr>
+</table>
+
+<script>
+    class KhachHang {
+        constructor(makhachHang, tenkhachHang, sodienThoai, diaChi, email) {
+            this.makhachHang = makhachHang;
+            this.tenkhachHang = tenkhachHang;
+            this.sodienThoai = sodienThoai;
+            this.diaChi = diaChi;
+            this.email = email;
+        }
+    }
+
+    let luutrukhachHang = [];
+
+    document.getElementById("themkhachHang").onclick = function () {
+        themkhachHang();
+    };
+
+    function themkhachHang() {
+        let makhachHang = document.getElementById("makhachHang").value;
+        let tenkhachHang = document.getElementById("tenkhachHang").value;
+        let sodienThoai = document.getElementById("sodienThoai").value;
+        let diaChi = document.getElementById("diaChi").value;
+        let email = document.getElementById("email").value;
+        if (!makhachHang || !tenkhachHang || !sodienThoai || !diaChi || !email) {
+            alert("Vui lòng điền đầy đủ thông tin!");
+            return;
+        }
+
+        let khachHang = new KhachHang(makhachHang, tenkhachHang, sodienThoai, diaChi, email);
+        luutrukhachHang.push(khachHang);
+
+        hienthikhachHang();
+        xoathongTin();
+    }
+
+    function hienthikhachHang() {
+        const danhSach = document.getElementById("danhSach");
+        danhSach.innerHTML = `
+                <tr>
+                    <th>Mã khách hàng</th>
+                    <th>Tên khách hàng</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
+                    <th>Email</th>
+                </tr>
+            `;
+
+        luutrukhachHang.forEach(customer => {
+            const row = danhSach.insertRow();
+            row.insertCell(0).innerText = customer.makhachHang;
+            row.insertCell(1).innerText = customer.tenkhachHang;
+            row.insertCell(2).innerText = customer.sodienThoai;
+            row.insertCell(3).innerText = customer.diaChi;
+            row.insertCell(4).innerText = customer.email;
+        });
+    }
+
+    function xoathongTin() {
+        document.getElementById("makhachHang").value = '';
+        document.getElementById("tenkhachHang").value = '';
+        document.getElementById("sodienThoai").value = '';
+        document.getElementById("diaChi").value = '';
+        document.getElementById("email").value = '';
+    }
+</script>
+</body>
+</html>

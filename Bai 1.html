@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function bai1() {
+        const arr = [];
+        let n;
+        while (true) {
+            n = parseInt(prompt("Nhập số lượng phần tử (n <= 20): "));
+            if (n >= 1 && n <= 20) {
+                break;
+            } else {
+                alert("n phải nằm trong khoảng từ 1 đến 20. Vui lòng nhập lại.");
+            }
+        }
+        for (let i = 0; i < n; i++) {
+            let num;
+            while (true) {
+                num = parseInt(prompt(`Nhập phần tử thứ ${i + 1}: `));
+                if (!isNaN(num)) {
+                    arr.push(num);
+                    break;
+                } else {
+                    alert("Vui lòng nhập số nguyên.");
+                }
+            }
+        }
+        console.log("Mảng đã nhập:", arr);
+        let total = 0;
+        const boiChung = [];
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] % 3 === 0 && arr[i] % 5 === 0) {
+                boiChung.push(arr[i]);
+                total += arr[i];
+            }
+        }
+        console.log(boiChung);
+        console.log(total);
+    }
+
+    bai1()
+</script>
+</body>
+</html>

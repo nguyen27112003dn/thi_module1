@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function lamtronDiem(diem) {
+        if (diem < 0 || diem > 100) {
+            return "Điểm không hợp lệ. Điểm phải nằm trong khoảng từ 0 đến 100.";
+        }
+        if (diem < 48) {
+            return diem;
+        }
+        const boisotiepTheo = Math.ceil(diem / 5) * 5;
+        if (boisotiepTheo - diem < 3) {
+            return boisotiepTheo;
+        }
+        return diem;
+    }
+
+    console.log(lamtronDiem(84));
+    console.log(lamtronDiem(77));
+    console.log(lamtronDiem(44));
+    console.log(lamtronDiem(101));
+
+</script>
+</body>
+</html>
